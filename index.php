@@ -1,6 +1,8 @@
 <?php
 	$httpReferer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : null;
 	$httpReferer = "http://brusvyanka.ru/proekty-domov/tayga/";	
+	echo $_GET['referer'];
+	die();
 	$httpReferer = $_GET['referer'];
 
 	$alias = end(array_filter(explode("/", parse_url($httpReferer, PHP_URL_PATH))));	
