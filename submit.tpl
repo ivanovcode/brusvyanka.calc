@@ -1,12 +1,13 @@
 <!doctype html>
 <title>Брусвянка - Калькулятор стоимости дома</title>
 <style>
-  body { text-align: center; padding: 50px; background-color: #80c462;}
+  body { text-align: center; padding: 25px; background-color: #80c462;}
   h1 { font-size: 50px; }
-  body { font: 20px Helvetica, sans-serif; color: #333; }
+  body { font: 16px Helvetica, sans-serif; color: #fff; }
   article { display: block; text-align: left; width: 650px; margin: 0 auto; }
   a { color: #dc8100; text-decoration: none; }
   a:hover { color: #333; text-decoration: none; }
+  p{ padding: 0px; }
 </style>
 
 <article>
