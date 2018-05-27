@@ -11,8 +11,7 @@
 
 
 	$db = new SQLite3(realpath('db.db'));
-	echo "test";
-	die();
+
 	$results = $db->query("SELECT products.article, products.area, products.rooms, products.floors FROM products WHERE products.alias = '".$alias."'");
 	$rows = $results->fetchArray();
 	
