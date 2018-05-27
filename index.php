@@ -1,6 +1,5 @@
 <?php
-	echo phpinfo();
-	die();
+
 	$httpReferer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : null;
 	$httpReferer = "http://brusvyanka.ru/proekty-domov/tayga/";	
 
