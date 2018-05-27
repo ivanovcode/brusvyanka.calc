@@ -9,11 +9,11 @@
 	if(empty($alias)) die("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
 
 	$db = new SQLite3('db.db');
-
+	echo "test";
+	die();
 	$results = $db->query("SELECT products.article, products.area, products.rooms, products.floors FROM products WHERE products.alias = '".$alias."'");
 	$rows = $results->fetchArray();
-	print_r($rows);
-	die();	
+	
 	include("template.class.php");	
 	$submit = new Template("submit.tpl");
 	$submit->set("article", $rows['article']);
