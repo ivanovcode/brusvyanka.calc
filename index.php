@@ -12,7 +12,7 @@
 
 	$db = new SQLite3(realpath('db.db'));
 
-	$results = $db->query("SELECT products.article, products.area, products.rooms, products.floors FROM products WHERE products.alias = '".$alias."'");
+	$results = $db->query("SELECT products.article, products.area, products.rooms, products.floors, products.title, products.thumbnail FROM products WHERE products.alias = '".$alias."'");
 	$rows = $results->fetchArray();
 	
 	include("template.class.php");	
@@ -21,6 +21,8 @@
 	$submit->set("area", $rows['area']);
 	$submit->set("rooms", $rows['rooms']);
 	$submit->set("floors", $rows['floors']);
+	$submit->set("title", $rows['title']);
+	$submit->set("thumbnail", $rows['thumbnail']);
 	echo $submit->output();
 
 	/*while ($row = $results->fetchArray()) {
