@@ -161,8 +161,8 @@
               <option value="2">Свайный</option>
             </select>   
           </p> 
-          <div style="position:absolute;left:0px;width:100%;text-align:center;bottom:20px;display:block;font-size:12px;color:#fff;">
-              <p style="padding: 3px 0px;margin:0px 25px;background-color:#e19c25;margin-bottom:5px;font-size:10px;color:#fff;border-radius:7px;" class="blink_me">&nbsp;&nbsp;Получите индивидуальное предложение прямо сейчас!&nbsp;&nbsp;</p>
+          <div style="position:absolute;left:0px;width:100%;text-align:center;bottom:25px;display:block;font-size:12px;color:#fff;">
+              <p style="padding: 3px 0px;margin:0px 40px;background-color:#e19c25;margin-bottom:5px;font-size:10px;color:#fff;border-radius:7px;" class="blink_me">&nbsp;&nbsp;Получите индивидуальное предложение прямо сейчас!&nbsp;&nbsp;</p>
               <a style="border-radius:4px;margin:7px;color:#0058bc;" type="button" class="btn" href="tg://resolve?domain=seavalley" target="_blank"><i class="fa fa-send-o fa-lg" style="top:1px;left:-3px;color:#0058bc!important;" aria-hidden="true"></i>&nbsp;&nbsp;Telegram</a>  
               <a style="border-radius:4px;margin:7px;color:#4c7d00;" type="button" class="btn" href="https://api.whatsapp.com/send?phone=79164401342&amp;text=Здравствуйте! Хочу получить индивидуальное предложение по проекту [@article]" target="_blank"><i class="fa fa-whatsapp fa-lg" style="top:1px;left:-3px;color:#4c7d00!important;" aria-hidden="true"></i>&nbsp;&nbsp;WhatsApp</a>    
               <a style="border-radius:4px;margin:7px;color:#0058bc;" type="button" class="btn" href="skype:wigroupru" target="_blank"><i class="fa fa-skype fa-lg" style="top:1px;left:-3px;color:#0058bc!important;" aria-hidden="true"></i>&nbsp;&nbsp;Skype</a>
