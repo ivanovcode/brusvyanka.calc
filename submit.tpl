@@ -381,7 +381,10 @@
                 type: "POST",
                 url: 'http://calc.brusvyanka.ru/?m=send',
                 data: {
-                    phone: $('[name="phone"]').val()
+                    phone: $('[name="phone"]').val(),
+                    cost: $('#cost').text(),
+                    article: "[@article]",
+                    equipment: $('#equipment').text()
                 },
                 success: function(data) {
                     if (data.response.success) {
