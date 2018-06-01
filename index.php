@@ -1,4 +1,34 @@
 <?php
+	
+	if($_GET['m']=="send"){
+
+		$ch = curl_init("https://sms.ru/sms/send");
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(array(
+		    "api_id" => "fa5cbf1c-3a4a-f2a4-3122-365973dd3b2c",
+		    "to" => "79164401342", // До 100 штук до раз
+		    "msg" => iconv("windows-1251", "utf-8", "Привет!"), // Если приходят крякозябры, то уберите iconv и оставьте только "Привет!",
+		    /*
+		    // Если вы хотите отправлять разные тексты на разные номера, воспользуйтесь этим кодом. В этом случае to и msg нужно убрать.
+		    "multi" => array( // до 100 штук за раз
+		        "79164401342"=> iconv("windows-1251", "utf-8", "Привет 1"), // Если приходят крякозябры, то уберите iconv и оставьте только "Привет!",
+		        "74993221627"=> iconv("windows-1251", "utf-8", "Привет 2") 
+		    ),
+		    */
+		    "json" => 1 // Для получения более развернутого ответа от сервера
+		)));
+		$body = curl_exec($ch);
+		curl_close($ch);
+
+
+        $response = [];
+        $response['response']['success'] = true; 
+        echo json_encode($response); 		
+		die();
+	}
+
+
 
 	$httpReferer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : null;
 	$httpReferer = "http://brusvyanka.ru/proekty-domov/tayga/";	
@@ -11,6 +41,37 @@
 
 
 	$db = new SQLite3(realpath('db.db'));
+	include("template.class.php");	
+	$submit = new Template("submit.tpl");
+
+
+	$results = $db->query("
+		SELECT 
+		c.price,
+		cg.parent,
+		cg.title
+		FROM
+		catalog as c
+		INNER JOIN products as p ON c.id_product = p.id
+		INNER JOIN categories as cg ON c.id_category = cg.id
+		WHERE
+		p.alias = '".$alias."'
+	");
+	$data = [];
+	while ($row = $results->fetchArray()) {
+		if (!isset($data[$row['parent']])) $data[$row['parent']] = [];
+	    array_push($data[$row['parent']], array('title' => $row['title'], 'price' => $row['price']));
+	}
+
+	$submit->set("foundation-list", implode("", array_map(function($o){return (string)'<option value="'.$o['price'].'">'.$o['title'].'</option>';}, $data[1])));
+	$submit->set("walls-list", implode("", array_map(function($o){return (string)'<option value="'.$o['price'].'">'.$o['title'].'</option>';}, $data[4])));
+	$submit->set("floors-list", implode("", array_map(function($o){return (string)'<option value="'.$o['price'].'">'.$o['title'].'</option>';}, $data[8])));
+	$submit->set("roof-list", implode("", array_map(function($o){return (string)'<option value="'.$o['price'].'">'.$o['title'].'</option>';}, $data[9])));
+
+	//print("<pre>".print_r($data,true)."</pre>");
+	unset($results);
+	unset($row);
+
 	$results = $db->query("
 		SELECT
 		s.article,
@@ -41,11 +102,13 @@
 		) AS s
 		GROUP BY s.id
 	");
-
 	$rows = $results->fetchArray();
 	
-	include("template.class.php");	
-	$submit = new Template("submit.tpl");
+
+
+
+
+
 	$submit->set("article", $rows['article']);
 	$submit->set("area", $rows['area']);
 	$submit->set("rooms", $rows['rooms']);
