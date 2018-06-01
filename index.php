@@ -10,7 +10,7 @@
 		curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(array(
 		    "api_id" => "fa5cbf1c-3a4a-f2a4-3122-365973dd3b2c",
 		    "to" => "79164401342", // До 100 штук до раз
-		    "msg" => "Заявка! Артикул:".$_POST['article']." Комплектация: ".$_POST['equipment']." Стоимость: ".$_POST['cost']." Клиент: ".$_POST['phone'], // Если приходят крякозябры, то уберите iconv и оставьте только "Привет!",
+		    "msg" => "Заявка! Артикул: ".$_POST['article']." Комплектация: ".$_POST['equipment']." Стоимость: ".$_POST['cost']." Клиент: ".$_POST['phone'], // Если приходят крякозябры, то уберите iconv и оставьте только "Привет!",
 		    /*
 		    // Если вы хотите отправлять разные тексты на разные номера, воспользуйтесь этим кодом. В этом случае to и msg нужно убрать.
 		    "multi" => array( // до 100 штук за раз
@@ -26,6 +26,10 @@
 
         $response = [];
         $response['response']['success'] = true; 
+        $response['response']['article'] = $_POST['article']; 
+        $response['response']['equipment'] = $_POST['equipment']; 
+        $response['response']['cost'] = $_POST['cost']; 
+        $response['response']['phone'] = $_POST['phone']; 
         echo json_encode($response); 		
 		die();
 	}
