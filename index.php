@@ -1,10 +1,7 @@
 <?php
 	
 	if($_GET['m']=="send"){
-                    $_POST['phone']
-                    $_POST['cost']
-                    $_POST['article']
-                    $_POST['equipment']
+
 
 
 		$ch = curl_init("https://sms.ru/sms/send");
