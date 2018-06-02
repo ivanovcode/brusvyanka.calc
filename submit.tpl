@@ -235,7 +235,7 @@
         </div>  
         <div class="steps">
           <form class="send">
-          <p style="padding-top:15px;font-size:14px;">[@area] м² | Артикул: [@article]</p>
+          <p style="padding-top:15px;font-size:14px;">[@area] м² | Артикул: <span id="article">[@article]</span></p>
           <p style="padding-top:5px;font-size:19px;padding:0px 15px;">[@title]</p>     
           <input name="cost" type="hidden">              
           <textarea name="equipment" style="display:none;"></textarea>

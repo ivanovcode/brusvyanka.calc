@@ -8,7 +8,7 @@ $(document).ready(function() {
 	        data: {
 	            phone: $('[name="phone"]').val(),
 	            cost: $('#cost').text(),
-	            article: "[@article]",
+	            article: $('#article').text(),   
 	            equipment: $('#equipment').text()
 	        },
 	        success: function(data) {
