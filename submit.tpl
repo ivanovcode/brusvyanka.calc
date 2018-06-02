@@ -210,6 +210,18 @@
     border-color: #5c9544!important;
     clear: none!important;
   }
+  ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+      color: #fff;
+      opacity: 1; /* Firefox */
+  }
+
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+      color: #fff;
+  }
+
+  ::-ms-input-placeholder { /* Microsoft Edge */
+      color: #fff;
+  }
 </style>
 <article>
     <div class="in">        
@@ -379,7 +391,7 @@
           $('.order').hide();          
           $.ajax({
                 type: "POST",
-                url: 'http://calc.brusvyanka.ru/?m=send',
+                url: 'http://calc.brusvyanka/?m=send',
                 data: {
                     phone: $('[name="phone"]').val(),
                     cost: $('#cost').text(),
