@@ -209,19 +209,24 @@
     background-color: #5c9544!important;
     border-color: #5c9544!important;
     clear: none!important;
+    color:#fff;
+    text-transform: uppercase;
   }
+  .btn-submit:hover {opacity: 0.8}
+
   ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-      color: #fff;
+      color: #5c9544;
       opacity: 1; /* Firefox */
   }
 
   :-ms-input-placeholder { /* Internet Explorer 10-11 */
-      color: #fff;
+      color: #5c9544;
   }
 
   ::-ms-input-placeholder { /* Microsoft Edge */
-      color: #fff;
+      color: #5c9544;
   }
+
 </style>
 <article>
     <div class="in">        
@@ -229,6 +234,7 @@
           <div class="calc"></div>  
         </div>  
         <div class="steps">
+          <form class="send">
           <p style="padding-top:15px;font-size:14px;">[@area] м² | Артикул: [@article]</p>
           <p style="padding-top:5px;font-size:19px;padding:0px 15px;">[@title]</p>     
           <input name="cost" type="hidden">              
@@ -283,10 +289,11 @@
             <p style="padding: 0 15px;padding-top:24px;text-align:center;"><span class="btn-submit submit">Заказать</span></p>
             <div class="order hidden">
                 <p style="padding-top:24px;"><input class="input-phone" type="number" name="phone" required="" value="" placeholder="9876543210 *"></p>
-                <p style="padding: 0 15px;padding-top:24px;text-align:center;"><span class="btn-submit send">Отправить заявку</span></p>  
+                <p style="padding: 0 15px;padding-top:24px;text-align:center;"><input type="submit" class="btn-submit" value="Отправить заявку"></p> 
             </div>
             <div class="thanks hidden">
-              <p style="padding-top:24px;font-size:16px;color:#fff;"><strong>Заявка отправлена!</strong> В скором времени мы с вами свяжемся.</p>
+              <p style="padding-top:24px;font-size:37px;color:#5c9546;"><i class="fa fa-check-circle" aria-hidden="true"></i></p>
+              <p style="padding-top:5px;font-size:16px;color:#fff;"><strong>Заявка отправлена!</strong> В скором времени мы с вами свяжемся.</p>
             </div>
           </div>
           <div class="social" style="position:absolute;left:0px;width:100%;text-align:center;bottom:25px;display:block;font-size:12px;color:#fff;">
@@ -296,7 +303,7 @@
               <a style="border-radius:4px;margin:7px;color:#0058bc;" type="button" class="btn" href="skype:wigroupru" target="_blank"><i class="fa fa-skype fa-lg" style="top:1px;left:-3px;color:#0058bc!important;" aria-hidden="true"></i>&nbsp;&nbsp;Skype</a>
               <a style="border-radius:4px;margin:7px;color:#68008f;" type="button" class="btn" href="viber://add?number=79164401342" target="_blank"><i class="fa fa-phone-square fa-lg" style="top:1px;left:-3px;color:#68008f!important;" aria-hidden="true"></i>&nbsp;&nbsp;Viber</a>                            
           </div>
-
+          </form>
              
         </div>
     </div>
@@ -305,6 +312,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js" type="text/javascript"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-price-format/2.2.0/jquery.priceformat.min.js" type="text/javascript"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css">
+<script src="ajax.js" type="text/javascript"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <script type="text/javascript">
@@ -386,29 +394,11 @@
           $('.social').hide();          
           $('.order').fadeIn();
       });
-      $('.send').click(function(event){
-          event.preventDefault();
-          $('.order').hide();          
-          $.ajax({
-                type: "POST",
-                url: 'http://calc.brusvyanka/?m=send',
-                data: {
-                    phone: $('[name="phone"]').val(),
-                    cost: $('#cost').text(),
-                    article: "[@article]",
-                    equipment: $('#equipment').text()
-                },
-                success: function(data) {
-                    if (data.response.success) {
-                        $('.order').hide();
-                        $('.thanks').fadeIn();
-                    } else {
-                        $('[name="phone"]').val('');
-                    }
-                },
-                dataType: 'json'
-          });
-      });
+
+
+
+
+    
 
       /*switch ($option) { 
         case hasClass('foundation'): 
